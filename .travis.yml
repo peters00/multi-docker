@@ -1,6 +1,6 @@
 sudo: required
 language: generic
-services:
+ervices:
   - docker
 
 before_install:
@@ -14,11 +14,11 @@ after_success:
   - docker build -t peters0019/multi-nginx ./nginx
   - docker build -t peters0019/multi-server ./server
   - docker build -t peters0019/multi-worker ./worker
-
-  # log into docker
+  # Log in to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-  # push image to docker hub
+  # Take those images and push them to docker hub
   - docker push peters0019/multi-client
-  - docker push peters0019/multi-server
   - docker push peters0019/multi-nginx
+  - docker push peters0019/multi-server
   - docker push peters0019/multi-worker
+
